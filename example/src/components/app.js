@@ -1,4 +1,4 @@
-import React from 'react';
+import { h, Component } from 'preact';
 
 import DoughnutExample from './doughnut';
 import DynamicDoughnutExample from './dynamic-doughnut';
@@ -16,7 +16,7 @@ import CrazyDataLineExample from './crazyLine';
 import LegendOptionsExample from './legend-options';
 import LegendHandlersExample from './legend-handlers';
 
-export default class App extends React.Component {
+export default class App extends Component {
 	render() {
 		return (
 			<div>

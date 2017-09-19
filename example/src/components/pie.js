@@ -1,5 +1,5 @@
-import React from 'react';
-import {Pie} from 'react-chartjs-2';
+import { h } from 'preact';
+import {Pie} from 'preact-chartjs-2';
 
 const data = {
 	labels: [
@@ -22,15 +22,14 @@ const data = {
 	}]
 };
 
-export default React.createClass({
-  displayName: 'PieExample',
+const PieExample = () => {
 
-  render() {
     return (
       <div>
         <h2>Pie Example</h2>
         <Pie data={data} />
       </div>
     );
-  }
-});
+};
+
+export default PieExample;

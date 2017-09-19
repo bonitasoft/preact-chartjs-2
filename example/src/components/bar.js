@@ -1,5 +1,5 @@
-import React from 'react';
-import {Bar} from 'react-chartjs-2';
+import {h, Component} from 'preact';
+import {Bar} from 'preact-chartjs-2';
 
 const data = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -16,22 +16,20 @@ const data = {
   ]
 };
 
-export default React.createClass({
-  displayName: 'BarExample',
+const BarExample = () => {
+  return (
+    <div>
+      <h2>Bar Example (custom size)</h2>
+      <Bar
+        data={data}
+        width={100}
+        height={50}
+        options={{
+          maintainAspectRatio: false
+        }}
+      />
+    </div>
+  );
+};
 
-  render() {
-    return (
-      <div>
-        <h2>Bar Example (custom size)</h2>
-        <Bar
-          data={data}
-          width={100}
-          height={50}
-          options={{
-            maintainAspectRatio: false
-          }}
-        />
-      </div>
-    );
-  }
-});
+export default BarExample;

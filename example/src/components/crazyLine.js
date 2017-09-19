@@ -1,78 +1,73 @@
-import React from 'react';
-import {Bar} from 'react-chartjs-2';
+import {h, Component} from 'preact';
+import {Bar} from 'preact-chartjs-2';
 import color from 'rcolor';
 
 const initialState = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   datasets: [
     {
-		label: 'My First dataset',
-		backgroundColor: 'rgba(255,99,132,0.2)',
-		borderColor: 'rgba(255,99,132,1)',
-		borderWidth: 1,
-		hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-		hoverBorderColor: 'rgba(255,99,132,1)',
-		data: [65, 59, 80, 81, 56, 55, 40]
+      label: 'My First dataset',
+      backgroundColor: 'rgba(255,99,132,0.2)',
+      borderColor: 'rgba(255,99,132,1)',
+      borderWidth: 1,
+      hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+      hoverBorderColor: 'rgba(255,99,132,1)',
+      data: [65, 59, 80, 81, 56, 55, 40]
     }
   ]
 };
 
+class Graph extends Component {
 
+  componentWillMount() {
+    this.setState(initialState);
+  }
 
-const Graph = React.createClass({
-	displayName: 'Graph',
-	componentWillMount(){
-		this.setState(initialState);
-	},
-	componentDidMount(){
+  componentDidMount() {
 
-		var _this = this;
+    const _this = this;
 
-		setInterval(function(){
-			var oldDataSet = _this.state.datasets[0];
-			var newData = [];
+    setInterval(function () {
+      const oldDataSet = _this.state.datasets[0];
+      const newData = [];
 
-			for(var x=0; x< _this.state.labels.length; x++){
-				newData.push(Math.floor(Math.random() * 100));
-			}
+      for (let x = 0; x < _this.state.labels.length; x++) {
+        newData.push(Math.floor(Math.random() * 100));
+      }
 
-			var newDataSet = {
-				...oldDataSet
-			};
+      let newDataSet = {
+        ...oldDataSet
+      };
 
-			newDataSet.data = newData;
-			newDataSet.backgroundColor = color();
-			newDataSet.borderColor = color();
-			newDataSet.hoverBackgroundColor = color();
-			newDataSet.hoverBorderColor = color();
+      newDataSet.data = newData;
+      newDataSet.backgroundColor = color();
+      newDataSet.borderColor = color();
+      newDataSet.hoverBackgroundColor = color();
+      newDataSet.hoverBorderColor = color();
 
-			var newState = {
-				...initialState,
-				datasets: [newDataSet]
-			};
+      const newState = {
+        ...initialState,
+        datasets: [newDataSet]
+      };
 
-			_this.setState(newState);
-		}, 5000);
-	},
-	render() {
-		return (
-			<Bar data={this.state} />
-		);
-	}
-});
-
-
-
-
-export default React.createClass({
-  displayName: 'Crazy Random Graph',
+      _this.setState(newState);
+    }, 5000);
+  }
 
   render() {
     return (
-      <div>
-        <h2>You can even make crazy graphs like this!</h2>
- 		<Graph />
-      </div>
+      <Bar data={this.state}/>
     );
   }
-});
+}
+
+const CrazyDataLineExample = () => {
+  return (
+    <div>
+      <h2>You can even make crazy graphs like this!</h2>
+      <Graph/>
+    </div>
+  );
+};
+
+export default CrazyDataLineExample;

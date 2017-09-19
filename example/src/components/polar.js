@@ -1,5 +1,5 @@
-import React from 'react';
-import {Polar} from 'react-chartjs-2';
+import {h} from 'preact';
+import {Polar} from 'preact-chartjs-2';
 
 const data = {
   datasets: [{
@@ -28,15 +28,13 @@ const data = {
   ]
 };
 
-export default React.createClass({
-  displayName: 'PolarExample',
+const PolarExample = () => {
 
-  render() {
-    return (
-      <div>
-        <h2>Polar Example</h2>
-        <Polar data={data} />
-      </div>
-    );
-  }
-});
+  return (
+    <div>
+      <h2>Polar Example</h2>
+      <Polar data={data}/>
+    </div>
+  );
+};
+export default PolarExample;

@@ -1,5 +1,5 @@
-import React from 'react';
-import {HorizontalBar} from 'react-chartjs-2';
+import {h} from 'preact';
+import {HorizontalBar} from 'preact-chartjs-2';
 
 const data = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -16,15 +16,13 @@ const data = {
   ]
 };
 
-export default React.createClass({
-  displayName: 'BarExample',
+const BarExample = () => {
 
-  render() {
-    return (
-      <div>
-        <h2>Horizontal Bar Example</h2>
-        <HorizontalBar data={data} />
-      </div>
-    );
-  }
-});
+  return (
+    <div>
+      <h2>Horizontal Bar Example</h2>
+      <HorizontalBar data={data}/>
+    </div>
+  );
+};
+export default BarExample;

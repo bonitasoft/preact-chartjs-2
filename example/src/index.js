@@ -1,21 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { h, render } from 'preact';
 
 const MOUNT_NODE = document.getElementById('app');
 
-const render = () => {
-  const App = require('./components/app').default;
-
-  ReactDOM.render(<App />, MOUNT_NODE);
-};
-
-render();
+const App = require('./components/app').default;
+render(<App />, MOUNT_NODE);
 
 if (module.hot) {
   module.hot.accept(['./components/app'], () =>
     setImmediate(() => {
-      ReactDOM.unmountComponentAtNode(MOUNT_NODE);
-      render();
+      render('', MOUNT_NODE, root);
+      render('', MOUNT_NODE, root);
+      render(<App />, MOUNT_NODE);
     })
   );
 }

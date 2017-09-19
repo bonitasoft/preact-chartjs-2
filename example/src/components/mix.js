@@ -1,11 +1,12 @@
-import React from 'react';
-import {Bar} from 'react-chartjs-2';
+import {h} from 'preact';
+import {Bar} from 'preact-chartjs-2';
 
 const data = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-  datasets: [{
+  datasets: [
+    {
       label: 'Sales',
-      type:'line',
+      type: 'line',
       data: [51, 65, 40, 49, 60, 37, 40],
       fill: false,
       borderColor: '#EC932F',
@@ -15,7 +16,8 @@ const data = {
       pointHoverBackgroundColor: '#EC932F',
       pointHoverBorderColor: '#EC932F',
       yAxisID: 'y-axis-2'
-    },{
+    },
+    {
       type: 'bar',
       label: 'Visitor',
       data: [200, 185, 590, 621, 250, 400, 95],
@@ -80,25 +82,23 @@ const options = {
 };
 
 const plugins = [{
-    afterDraw: (chartInstance, easing) => {
-        const ctx = chartInstance.chart.ctx;
-        ctx.fillText("This text drawn by a plugin", 100, 100);
-    }
+  afterDraw: (chartInstance, easing) => {
+    const ctx = chartInstance.chart.ctx;
+    ctx.fillText('This text drawn by a plugin', 100, 100);
+  }
 }];
 
-export default React.createClass({
-  displayName: 'MixExample',
+const MixExample = () => {
+  return (
+    <div>
+      <h2>Mixed data Example</h2>
+      <Bar
+        data={data}
+        options={options}
+        plugins={plugins}
+      />
+    </div>
+  );
+};
 
-  render() {
-    return (
-      <div>
-        <h2>Mixed data Example</h2>
-        <Bar
-          data={data}
-          options={options}
-          plugins={plugins}
-        />
-      </div>
-    );
-  }
-});
+export default MixExample;
