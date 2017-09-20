@@ -7,14 +7,14 @@ const env = process.env.NODE_ENV;
 
 const config = {
   entry: 'src/index.js',
-  external: ['chart.js', 'react'],
+  external: ['chart.js', 'preact'],
   globals: {
     'chart.js': 'Chart',
-    react: 'React'
+    preact: 'Preact'
   },
   exports: 'named',
   format: 'umd',
-  moduleName: 'ReactChartjs2',
+  moduleName: 'PreactChartjs2',
   plugins: [
     nodeResolve(),
     babel({

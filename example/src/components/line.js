@@ -1,5 +1,5 @@
-import React from 'react';
-import {Line} from 'react-chartjs-2';
+import {h} from 'preact';
+import {Line} from 'preact-chartjs-2';
 
 const data = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -28,15 +28,14 @@ const data = {
   ]
 };
 
-export default React.createClass({
-  displayName: 'LineExample',
+const LineExample = () => {
 
-  render() {
-    return (
-      <div>
-        <h2>Line Example</h2>
-        <Line data={data} />
-      </div>
-    );
-  }
-});
+  return (
+    <div>
+      <h2>Line Example</h2>
+      <Line data={data}/>
+    </div>
+  );
+};
+
+export default LineExample;

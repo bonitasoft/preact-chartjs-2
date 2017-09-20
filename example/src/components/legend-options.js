@@ -1,5 +1,5 @@
-import React from 'react';
-import {Pie} from 'react-chartjs-2';
+import {h, Component} from 'preact';
+import {Pie} from 'preact-chartjs-2';
 
 const data = {
   labels: [
@@ -10,14 +10,14 @@ const data = {
   datasets: [{
     data: [300, 50, 100],
     backgroundColor: [
-    '#FF6384',
-    '#36A2EB',
-    '#FFCE56'
+      '#FF6384',
+      '#36A2EB',
+      '#FFCE56'
     ],
     hoverBackgroundColor: [
-    '#FF6384',
-    '#36A2EB',
-    '#FFCE56'
+      '#FF6384',
+      '#36A2EB',
+      '#FFCE56'
     ]
   }]
 };
@@ -32,43 +32,46 @@ const legendOpts = {
   }
 };
 
-export default React.createClass({
-  displayName: 'LegendExample',
+export default class LegendExample extends Component {
 
-  getInitialState() {
-    return {
+  constructor() {
+    super();
+    this.state = {
       legend: legendOpts
-    }
-  },
+    };
+    this.applyLegendSettings = this.applyLegendSettings.bind(this);
+  }
 
   applyLegendSettings() {
-    const { value } = this.legendOptsInput;
+    const {value} = this.legendOptsInput;
 
     try {
       const opts = JSON.parse(value);
       this.setState({
         legend: opts
       });
-    } catch(e) {
+    } catch (e) {
       alert(e.message);
       throw Error(e);
     }
-  },
+  }
 
-  render() {
+  render(props, state) {
     return (
       <div>
         <h2>Legend Options Example</h2>
         <textarea
           cols="40"
           rows="15"
-          ref={input => { this.legendOptsInput = input; }}
-          defaultValue={JSON.stringify(this.state.legend, null, 2)}></textarea>
+          ref={input => {
+            this.legendOptsInput = input;
+          }}
+          defaultValue={JSON.stringify(state.legend, null, 2)}/>
         <div>
           <button onClick={this.applyLegendSettings}>Apply legend settings</button>
         </div>
-        <Pie data={data} legend={this.state.legend} redraw />
+        <Pie data={data} legend={state.legend} redraw/>
       </div>
     );
   }
-})
+}

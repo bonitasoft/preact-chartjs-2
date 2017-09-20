@@ -1,5 +1,5 @@
-import React from 'react';
-import {Line} from 'react-chartjs-2';
+import {h, Component} from 'preact';
+import {Line} from 'preact-chartjs-2';
 
 const initialState = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -29,57 +29,54 @@ const initialState = {
 };
 
 
+class Graph extends Component {
 
-const Graph = React.createClass({
-	displayName: 'Graph',
-	componentWillMount(){
-		this.setState(initialState);
-	},
-	componentDidMount(){
+  componentWillMount() {
+    this.setState(initialState);
+  }
 
-		var _this = this;
+  componentDidMount() {
 
-		setInterval(function(){
-			var oldDataSet = _this.state.datasets[0];
-			var newData = [];
+    var _this = this;
 
-			for(var x=0; x< _this.state.labels.length; x++){
-				newData.push(Math.floor(Math.random() * 100));
-			}
+    setInterval(function () {
+      var oldDataSet = _this.state.datasets[0];
+      var newData = [];
 
-			var newDataSet = {
-				...oldDataSet
-			};
+      for (var x = 0; x < _this.state.labels.length; x++) {
+        newData.push(Math.floor(Math.random() * 100));
+      }
 
-			newDataSet.data = newData;
+      var newDataSet = {
+        ...oldDataSet
+      };
 
-			var newState = {
-				...initialState,
-				datasets: [newDataSet]
-			};
+      newDataSet.data = newData;
 
-			_this.setState(newState);
-		}, 5000);
-	},
-	render() {
-		return (
-			<Line data={this.state} />
-		);
-	}
-});
+      var newState = {
+        ...initialState,
+        datasets: [newDataSet]
+      };
 
+      _this.setState(newState);
+    }, 5000);
+  }
 
-
-
-export default React.createClass({
-  displayName: 'RandomizedDataLineExample',
-
-  render() {
+  render(props, state) {
     return (
-      <div>
-        <h2>Random Animated Line Example</h2>
- 		<Graph />
-      </div>
+      <Line data={state}/>
     );
   }
-});
+
+}
+
+const RandomizedDataLineExample = () => {
+  return (
+    <div>
+      <h2>Random Animated Line Example</h2>
+      <Graph/>
+    </div>
+  );
+};
+
+export default RandomizedDataLineExample;

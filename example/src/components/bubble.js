@@ -1,5 +1,5 @@
-import React from 'react';
-import {Bubble} from 'react-chartjs-2';
+import {h, Component} from 'preact';
+import {Bubble} from 'preact-chartjs-2';
 
 const data = {
   labels: ['January'],
@@ -23,20 +23,18 @@ const data = {
       pointHoverBorderWidth: 2,
       pointRadius: 1,
       pointHitRadius: 10,
-      data: [{x:10,y:20,r:5}]
+      data: [{x: 10, y: 20, r: 5}]
     }
   ]
 };
 
-export default React.createClass({
-  displayName: 'BubbleExample',
+const BubbleExample = () => {
+  return (
+    <div>
+      <h2>Bubble Example</h2>
+      <Bubble data={data}/>
+    </div>
+  );
+};
 
-  render() {
-    return (
-      <div>
-        <h2>Bubble Example</h2>
-        <Bubble data={data} />
-      </div>
-    );
-  }
-});
+export default BubbleExample;

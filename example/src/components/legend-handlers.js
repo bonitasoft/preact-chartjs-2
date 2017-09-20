@@ -1,5 +1,5 @@
-import React from 'react';
-import {Pie} from 'react-chartjs-2';
+import {h, Component} from 'preact';
+import {Pie} from 'preact-chartjs-2';
 
 const data = {
   labels: [
@@ -27,14 +27,15 @@ const legendOpts = {
   onHover: (e, item) => alert(`Item with text ${item.text} and index ${item.index} hovered`),
 };
 
-export default React.createClass({
-  displayName: 'LegendExample',
+export default class LegendExample extends Component {
 
-  getInitialState() {
-    return {
+  constructor () {
+    super ();
+    this.state = {
       legend: legendOpts
-    }
-  },
+    };
+    this.applyLegendSettings = this.applyLegendSettings.bind(this);
+  }
 
   applyLegendSettings() {
     const { value } = this.legendOptsInput;
@@ -48,15 +49,15 @@ export default React.createClass({
       alert(e.message);
       throw Error(e);
     }
-  },
+  }
 
-  render() {
+  render(props, state) {
     return (
       <div>
         <h2>Legend Handlers Example</h2>
         <p>Hover over label and click</p>
-        <Pie data={data} legend={this.state.legend} />
+        <Pie data={data} legend={state.legend} />
       </div>
     );
   }
-})
+}
