@@ -16,7 +16,8 @@
   },
   "dependencies": {
     "lodash": "^4.17.4",
-    "preact": "^8.2.5"
+    "preact": "^8.2.5",
+    "chart.js": "2.6.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -31,7 +32,6 @@
     "canvas": "^1.6.7",
     "canvas-prebuilt": "^1.6.5-prerelease.1",
     "chai": "^3.5.0",
-    "chart.js": "2.6.0",
     "cross-env": "^5.0.0",
     "css-loader": "^0.28.5",
     "debug": "^2.4.1",
@@ -51,9 +51,6 @@
     "style-loader": "^0.18.2",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1"
-  },
-  "peerDependencies": {
-    "chart.js": "^2.3"
   },
   "options": {
     "mocha": "--require test/config/mocha_runner ./test/__tests__/**/*.js"
