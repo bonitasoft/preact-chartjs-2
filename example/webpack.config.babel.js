@@ -20,7 +20,12 @@ const config = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2016', 'es2017', 'preact', 'stage-0']
+          }
+        }
       },
       {
         test: /\.css$/,

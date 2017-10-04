@@ -208,7 +208,7 @@ class ChartComponent extends Component {
   }
 
   ref = (element) => {
-    this.element = element
+    this.element = element;
   }
 
   render() {

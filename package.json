@@ -15,8 +15,10 @@
     "url": "https://github.com/bonitasoft/preact-chartjs-2/issues"
   },
   "dependencies": {
+    "@skatejs/renderer-preact": "^0.1.0",
     "lodash": "^4.17.4",
-    "preact": "^8.2.5"
+    "preact": "^8.2.5",
+    "skatejs": "^5.0.0-beta.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -24,8 +26,12 @@
     "babel-eslint": "^4.1.3",
     "babel-loader": "^7.1.1",
     "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.0",
     "babel-preset-es2015": "^6.13.2",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
     "babel-preset-preact": "^1.1.0",
+    "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-1": "^6.13.0",
     "babel-register": "^6.18.0",
     "canvas": "^1.6.7",
@@ -69,6 +75,7 @@
     "examples:clean": "rimraf example/dist",
     "examples:build": "cross-env BABEL_ENV=development NODE_ENV=production webpack --config example/webpack.config.babel.js --progress",
     "examples:deploy": "npm run examples:clean && npm run examples:build && gh-pages -d example/dist",
+    "publish": "npm run build:es",
     "start": "npm run examples",
     "lint": "eslint ./; true",
     "test": "mocha $npm_package_options_mocha"
