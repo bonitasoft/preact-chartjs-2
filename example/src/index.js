@@ -2,7 +2,8 @@ import { h, render } from 'preact';
 
 const MOUNT_NODE = document.getElementById('app');
 
-const App = require('./components/app').default;
+const App = require('./components-custom-elements/app').default;
+// const App = require('./components/app').default;
 render(<App />, MOUNT_NODE);
 
 if (module.hot) {

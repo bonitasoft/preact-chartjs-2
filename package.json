@@ -1,6 +1,6 @@
 {
   "name": "preact-chartjs-2",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "preact-chartjs-2",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -15,17 +15,24 @@
     "url": "https://github.com/bonitasoft/preact-chartjs-2/issues"
   },
   "dependencies": {
+    "@skatejs/renderer-preact": "^0.1.0",
     "lodash": "^4.17.4",
-    "preact": "^8.2.5"
+    "preact": "^8.2.5",
+    "skatejs": "^5.0.0-beta.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.18.2",
     "babel-eslint": "^4.1.3",
     "babel-loader": "^7.1.1",
+    "babel-minify-webpack-plugin": "^0.2.0",
     "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.0",
     "babel-preset-es2015": "^6.13.2",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
     "babel-preset-preact": "^1.1.0",
+    "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-1": "^6.13.0",
     "babel-register": "^6.18.0",
     "canvas": "^1.6.7",
@@ -44,9 +51,9 @@
     "rcolor": "^1.0.1",
     "rollup": "^0.47.6",
     "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-babel-minify": "^3.1.2",
     "rollup-plugin-commonjs": "^8.1.0",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-uglify": "^2.0.1",
     "sinon": "^1.17.6",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.5",
@@ -60,7 +67,7 @@
   },
   "scripts": {
     "clean": "rimraf lib es dist",
-    "build:cjs": "babel src --out-dir lib",
+    "build:cjs": "BABEL_ENV=cjs babel src --out-dir lib",
     "build:es": "cross-env BABEL_ENV=jsnext babel src --out-dir es",
     "build:umd": "cross-env BABEL_ENV=rollup NODE_ENV=development rollup -c -o dist/preact-chartjs-2.js",
     "build:umd:min": "cross-env BABEL_ENV=rollup NODE_ENV=production rollup -c -o dist/preact-chartjs-2.min.js",
@@ -69,6 +76,7 @@
     "examples:clean": "rimraf example/dist",
     "examples:build": "cross-env BABEL_ENV=development NODE_ENV=production webpack --config example/webpack.config.babel.js --progress",
     "examples:deploy": "npm run examples:clean && npm run examples:build && gh-pages -d example/dist",
+    "publish": "npm run build:es",
     "start": "npm run examples",
     "lint": "eslint ./; true",
     "test": "mocha $npm_package_options_mocha"

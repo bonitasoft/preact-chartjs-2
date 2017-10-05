@@ -2,16 +2,23 @@
   "env": {
     "development": {
       "presets": [
-        ["es2015", { "modules": "commonjs", "loose": true }],
-        "preact",
-        "stage-1"
+        ["env", {
+          "targets": {
+            "chrome": 60
+          }
+        }]
       ]
     },
     "rollup": {
       "presets": [
-        ["es2015", { "modules": false, "loose": true }],
+        "stage-2",
         "preact",
-        "stage-1"
+        ["env", {
+          "modules": false,
+          "targets": {
+            "chrome": 60
+          }
+        }]
       ],
       "plugins": [
         "external-helpers"
@@ -19,10 +26,21 @@
     },
     "jsnext": {
       "presets": [
-        ["es2015", { "modules": false, "loose": true }],
+        "stage-2",
         "preact",
-        "stage-1"
+        ["env", {
+          "targets": {
+            "chrome": 60
+          }
+        }]
       ]
-    }
+    },
+    "cjs": {
+      "presets": [
+        ["es2015", { "modules": "commonjs", "loose": true }],
+        "preact",
+        "stage-2"
+      ]
+    },
   }
 }
