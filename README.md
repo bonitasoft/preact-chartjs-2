@@ -25,6 +25,17 @@ Then open [`localhost:8000`](http://localhost:8000) in a browser.
 yarn add preact-chartjs-2 chart.js
 ```
 
+## Web Components Compatible
+
+All chart components are exported using [skatejs](https://github.com/skatejs/skatejs/)
+and follow the [Custom Elements v1](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements) 
+specs.
+
+Future work:
+
+- [x] Map data and option properties
+- [ ] Export the full set of components
+
 ## Usage
 
 Check example/src/components/* for usage.

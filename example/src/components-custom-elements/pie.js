@@ -27,7 +27,17 @@ const PieExample = () => {
     return (
       <div >
         <h2>Pie Example</h2>
-        <pie-chart style={{display: 'block'}} data={data} />
+        <pie-chart
+          style={{display: 'block'}}
+          data={data}
+          options={{
+            maintainAspectRatio: false,
+            responsive: true,
+            legend: {
+              position: 'left'
+            }
+          }}
+        />
       </div>
     );
 };

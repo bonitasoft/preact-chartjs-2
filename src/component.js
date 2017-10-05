@@ -1,4 +1,4 @@
-import {h} from 'preact'
+import {h} from 'preact';
 import { props, withProps, withUnique, withRenderer } from 'skatejs/esnext';
 import withPreact from '@skatejs/renderer-preact/esnext';
 
@@ -16,13 +16,7 @@ function propsWithDefault(type, def) {
 
 class PieWrap extends SkateComponent {
   static props = {
-    legend: props.any,
-    type: propsWithDefault(props.string, 'doughnut'),
-    height: propsWithDefault(props.number, 150),
-    width: propsWithDefault(props.number, 300),
-    redraw: props.boolean,
     options: props.object,
-    datasetKeyProvider: props.any,
     data: props.object
   };
   attachShadow() {

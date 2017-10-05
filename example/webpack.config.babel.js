@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import MinifyPlugin from 'babel-minify-webpack-plugin';
 
 const inExamples = loc => path.resolve(__dirname, loc);
 
@@ -93,34 +94,11 @@ if (__DEV__) {
 else {
   config.plugins.push(
     new webpack.optimize.ModuleConcatenationPlugin(),
-
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false,
     }),
-
-    new webpack.optimize.UglifyJsPlugin({
-      comments: false,
-      compress: {
-        warnings: false,
-        screw_ie8: true,
-        conditionals: true,
-        unused: true,
-        comparisons: true,
-        sequences: true,
-        dead_code: true,
-        evaluate: true,
-        if_return: true,
-        join_vars: true,
-      },
-      mangle: {
-        screw_ie8: true
-      },
-      output: {
-        comments: false,
-        screw_ie8: true
-      }
-    })
+    new MinifyPlugin()
   );
 }
 
