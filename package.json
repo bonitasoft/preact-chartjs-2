@@ -1,6 +1,6 @@
 {
   "name": "preact-chartjs-2",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "preact-chartjs-2",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -76,7 +76,7 @@
     "examples:clean": "rimraf example/dist",
     "examples:build": "cross-env BABEL_ENV=development NODE_ENV=production webpack --config example/webpack.config.babel.js --progress",
     "examples:deploy": "npm run examples:clean && npm run examples:build && gh-pages -d example/dist",
-    "publish": "npm run build:es",
+    "publish": "npm run build",
     "start": "npm run examples",
     "lint": "eslint ./; true",
     "test": "mocha $npm_package_options_mocha"
