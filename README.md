@@ -2,6 +2,10 @@
 
 # Preact-chartjs-2
 
+| **2022-01-21. This project is archived and not updated anymore** |
+| -------- |
+
+
 Preact wrapper for [Chart.js 2](http://www.chartjs.org/docs/#getting-started) based on the awesome implementation of [react-chartjs-2](https://github.com/jerairrest/react-chartjs-2) created by [@jerairrest](https://github.com/jerairrest)
 
 Open for PRs and contributions!
